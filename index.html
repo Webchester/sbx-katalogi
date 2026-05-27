@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SBX Finland – Tuotekatalogi 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2D5B;--navy-dark:#0f1c3a;--navy-mid:#243570;
+  --red:#D41F2C;--red-dark:#a8141f;
+  --white:#fff;--off:#F4F5F7;--warm:#E8E9EC;
+  --text:#1a1c22;--muted:#6b7280;--border:#D1D5DB;
+  --teal:#0F6E56;
+}
+body{font-family:'Barlow',sans-serif;background:var(--off);color:var(--text);font-size:14px}
+
+/* HEADER */
+header{background:var(--navy-dark);position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+.header-top{background:var(--red);padding:5px 24px;font-size:11px;color:rgba(255,255,255,.85);letter-spacing:.06em;text-align:right}
+.header-main{display:flex;align-items:center;gap:16px;padding:12px 24px;max-width:1200px;margin:0 auto}
+.logo-svg{height:44px;width:auto}
+.header-title{display:flex;flex-direction:column;line-height:1}
+.header-title span:first-child{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;color:#fff;letter-spacing:.05em;text-transform:uppercase}
+.header-title span:last-child{font-size:11px;color:rgba(255,255,255,.5);letter-spacing:.15em;text-transform:uppercase;margin-top:2px}
+.header-badge{margin-left:auto;background:var(--red);color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.08em;padding:4px 14px;text-transform:uppercase}
+
+/* TOOLBAR */
+.toolbar{background:var(--navy);padding:10px 24px}
+.toolbar-inner{max-width:1200px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.search-box{flex:1;min-width:200px;position:relative}
+.search-box input{width:100%;padding:8px 12px 8px 34px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-family:'Barlow',sans-serif;font-size:13px;border-radius:3px;outline:none}
+.search-box input::placeholder{color:rgba(255,255,255,.45)}
+.search-box input:focus{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.4)}
+.search-icon{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.5)}
+.filter-group{display:flex;gap:6px;flex-wrap:wrap}
+.filter-btn{padding:6px 12px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:rgba(255,255,255,.8);font-family:'Barlow',sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-radius:3px;transition:all .15s;white-space:nowrap}
+.filter-btn:hover{background:rgba(255,255,255,.2)}
+.filter-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+.divider-v{width:1px;height:28px;background:rgba(255,255,255,.15)}
+
+/* ICON FILTERS */
+.icon-filters{background:var(--navy-mid);padding:8px 24px;border-bottom:1px solid rgba(255,255,255,.1);overflow-x:auto}
+.icon-filters-inner{max-width:1200px;margin:0 auto;display:flex;gap:6px;align-items:center;min-width:max-content}
+.icon-filter-label{font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.1em;text-transform:uppercase;margin-right:4px;white-space:nowrap}
+.icon-btn{display:flex;align-items:center;gap:5px;padding:4px 10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:11px;cursor:pointer;border-radius:2px;transition:all .15s;white-space:nowrap}
+.icon-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.icon-btn:hover{background:rgba(255,255,255,.15)}
+.icon-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* LAYOUT */
+.layout{display:flex;max-width:1200px;margin:0 auto}
+.sidebar{width:220px;flex-shrink:0;background:#fff;border-right:1px solid var(--border);min-height:calc(100vh - 140px);padding:16px 0}
+.sidebar-section{margin-bottom:4px}
+.sidebar-title{font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding:8px 16px 4px}
+.sidebar-item{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;cursor:pointer;font-size:13px;color:var(--text);transition:all .1s;border-left:3px solid transparent}
+.sidebar-item:hover{background:var(--off);color:var(--navy)}
+.sidebar-item.active{background:#EEF1F8;color:var(--navy);font-weight:600;border-left-color:var(--red)}
+.sidebar-count{font-size:11px;color:var(--muted);background:var(--warm);padding:1px 6px;border-radius:10px}
+.sidebar-item.active .sidebar-count{background:var(--navy);color:#fff}
+
+/* CONTENT */
+.content{flex:1;padding:20px;min-width:0}
+.content-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.cat-header{display:flex;align-items:center;gap:10px}
+.cat-bar{width:4px;height:26px;background:var(--red);flex-shrink:0}
+.cat-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;color:var(--navy);text-transform:uppercase;letter-spacing:.04em}
+.content-meta{display:flex;align-items:center;gap:10px}
+.count-badge{font-size:12px;color:var(--muted)}
+.view-opts{display:flex;gap:4px}
+.view-btn{padding:5px 8px;background:#fff;border:1px solid var(--border);cursor:pointer;color:var(--muted);font-size:12px;transition:all .1s;border-radius:2px}
+.view-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* PRINT BAR */
+.print-bar{background:#fff;border:1px solid var(--border);border-radius:4px;padding:12px 16px;margin-bottom:16px;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.print-bar-label{font-size:12px;font-weight:600;color:var(--navy);white-space:nowrap}
+.print-select{padding:5px 8px;border:1px solid var(--border);background:#fff;font-family:'Barlow',sans-serif;font-size:12px;color:var(--text);cursor:pointer;outline:none;border-radius:2px}
+.print-btn{padding:6px 16px;background:var(--red);border:none;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .15s;display:flex;align-items:center;gap:6px}
+.print-btn:hover{background:var(--red-dark)}
+.print-btn svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.suggest-label{font-size:11px;color:var(--muted)}
+
+/* GRID */
+.grid{display:grid;gap:14px}
+.grid.g4{grid-template-columns:repeat(2,1fr)}
+.grid.g6{grid-template-columns:repeat(2,1fr)}
+.grid.g9{grid-template-columns:repeat(3,1fr)}
+.grid.g12{grid-template-columns:repeat(4,1fr)}
+@media(min-width:900px){
+  .grid.g4{grid-template-columns:repeat(2,1fr)}
+  .grid.g6{grid-template-columns:repeat(3,1fr)}
+  .grid.g9{grid-template-columns:repeat(3,1fr)}
+  .grid.g12{grid-template-columns:repeat(4,1fr)}
+}
+
+/* CARD */
+.card{background:#fff;border:1px solid var(--border);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s;position:relative;break-inside:avoid}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.card-img-wrap{position:relative;background:var(--warm)}
+.card-img{width:100%;aspect-ratio:1;object-fit:cover;object-position:top center;display:block;transition:opacity .2s}
+.img-nav{position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:3px;opacity:0;transition:opacity .2s}
+.card:hover .img-nav{opacity:1}
+.img-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.6);cursor:pointer;border:none}
+.img-dot.active{background:#fff}
+.card-badges{position:absolute;top:8px;left:8px;display:flex;flex-direction:column;gap:3px;z-index:2}
+.badge-stock{background:var(--teal);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px}
+.badge-order{background:var(--navy);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px}
+.badge-top{background:var(--red);color:#fff;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 6px}
+.card-icons{padding:6px 8px 4px;display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--warm);min-height:26px}
+.card-icon svg{width:13px;height:13px;stroke:var(--navy);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.card-icon.red svg{stroke:var(--red)}
+.card-icon.amber svg{stroke:#d97706}
+.card-icon.blue svg{stroke:#3b82f6}
+.card-icon.green svg{stroke:var(--teal)}
+.card-body{padding:8px 10px;flex:1;display:flex;flex-direction:column}
+.card-brand{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--red);margin-bottom:2px}
+.card-code{font-size:10px;color:var(--muted);margin-bottom:2px}
+.card-name{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;color:var(--navy);line-height:1.2;margin-bottom:5px}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.5;flex:1;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:5px}
+.card-standards{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:5px}
+.std-tag{font-size:9px;font-weight:700;letter-spacing:.06em;background:#EEF1F8;color:var(--navy);padding:2px 5px;border-radius:2px}
+.card-colors{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:6px}
+.color-dot{width:16px;height:16px;border-radius:2px;border:1px solid rgba(0,0,0,.15);cursor:pointer;transition:transform .1s;flex-shrink:0;position:relative}
+.color-dot:hover{transform:scale(1.2)}
+.color-dot.active{outline:2px solid var(--navy);outline-offset:1px}
+.color-dot .w-mark{position:absolute;bottom:-2px;right:-2px;width:6px;height:6px;border-radius:50%;background:var(--red);border:1px solid #fff}
+.card-footer{border-top:1px solid var(--warm);padding:6px 10px;display:flex;align-items:center;justify-content:space-between}
+.card-price{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:var(--navy)}
+.card-price span{font-size:11px;font-weight:400;color:var(--muted)}
+.card-sizes{font-size:10px;color:var(--muted);text-align:right}
+
+.sidebar-color-dot{width:12px;height:12px;border-radius:2px;border:1px solid rgba(0,0,0,.15);flex-shrink:0;display:inline-block}
+.sidebar-item.color-item{gap:8px}
+.sidebar-item.color-item.active .sidebar-color-dot{outline:2px solid var(--navy);outline-offset:1px}
+
+/* LOADING */
+.loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 20px;color:var(--muted);gap:16px}
+.spinner{width:36px;height:36px;border:3px solid var(--warm);border-top-color:var(--navy);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty{grid-column:1/-1;text-align:center;padding:60px;color:var(--muted)}
+
+/* MOBILE */
+.mob-cat-bar{display:none}
+@media(max-width:768px){
+  .header-main{padding:10px 14px}
+  .logo-svg{height:32px}
+  .header-title span:first-child{font-size:14px}
+  .header-badge{font-size:10px;padding:3px 8px}
+  .toolbar-inner{padding:8px 12px}
+  .divider-v{display:none}
+  .sidebar{display:none}
+  .mob-cat-bar{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;background:#fff;border-bottom:1px solid var(--border);padding:8px 12px;gap:6px}
+  .mob-cat-bar::-webkit-scrollbar{display:none}
+  .mob-cat-btn{flex-shrink:0;padding:5px 12px;background:var(--off);border:1px solid var(--border);border-radius:20px;font-size:12px;font-weight:500;color:var(--text);cursor:pointer;white-space:nowrap}
+  .mob-cat-btn.active{background:var(--navy);border-color:var(--navy);color:#fff}
+  .content{padding:12px}
+  .print-bar{flex-direction:column;align-items:flex-start}
+  .print-select{width:100%}
+  .print-btn{width:100%;justify-content:center}
+  .grid.g4,.grid.g6,.grid.g9,.grid.g12{grid-template-columns:repeat(2,1fr);gap:10px}
+  .view-opts{display:none}
+}
+
+/* PRICE FILTER */
+.price-filter{padding:8px 16px 12px}
+.price-range-wrap{display:flex;flex-direction:column;gap:6px}
+.price-range-label{font-size:12px;color:var(--text);display:flex;justify-content:space-between}
+.price-range-label span{font-weight:600;color:var(--navy)}
+input[type=range]{width:100%;accent-color:var(--navy);height:4px}
+.price-inputs{display:flex;gap:6px}
+.price-input{width:100%;padding:4px 6px;border:1px solid var(--border);border-radius:3px;font-size:12px;font-family:'Barlow',sans-serif;outline:none;color:var(--text)}
+.price-input:focus{border-color:var(--navy)}
+
+/* PRINT */
+@media print{
+  @page{size:A4 portrait;margin:12mm 10mm}
+  header,.toolbar,.icon-filters,.sidebar,.print-bar,.view-opts,.count-badge,.mob-cat-bar{display:none!important}
+  body{background:#fff}
+  .layout{display:block}
+  .content{padding:0}
+  .print-header{display:flex!important;align-items:flex-start;justify-content:space-between;padding-bottom:8px;border-bottom:3px solid var(--navy);margin-bottom:12px}
+  .grid.g4{grid-template-columns:repeat(2,1fr)}
+  .grid.g6{grid-template-columns:repeat(3,1fr)}
+  .grid.g9{grid-template-columns:repeat(3,1fr)}
+  .grid.g12{grid-template-columns:repeat(4,1fr)}
+  .card{break-inside:avoid;border:1px solid #ccc}
+  /* Pakota kuvat tulostumaan */
+  .card-img-wrap{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .card-img{
+    display:block!important;
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+    height:150px!important;
+    aspect-ratio:unset!important;
+    object-fit:cover!important;
+    opacity:1!important;
+  }
+  .grid.g4 .card-img{height:200px!important}
+  .grid.g6 .card-img{height:150px!important}
+  .grid.g9 .card-img{height:110px!important}
+  .grid.g12 .card-img{height:85px!important}
+  .img-nav{display:none}
+  .card-badges{position:absolute;top:4px;left:4px}
+  .badge-stock,.badge-order,.badge-top{font-size:7px;padding:1px 4px}
+  .card:hover{transform:none;box-shadow:none}
+}
+.print-header{display:none}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">Asiakaspalvelu ma–pe 8–16 &nbsp;|&nbsp; 020 720 9030 &nbsp;|&nbsp; myynti@sbx.fi</div>
+  <div class="header-main">
+    <svg class="logo-svg" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+      <path d="M8 52C8 44 14 40 24 40L38 40C42 40 44 38 44 34C44 30 42 28 38 28L12 28" stroke="#D41F2C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <path d="M44 28C44 20 38 16 28 16L14 16C10 16 8 18 8 22C8 26 10 28 14 28" stroke="#D41F2C" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <text x="52" y="52" font-family="'Barlow Condensed',sans-serif" font-size="44" font-weight="800" fill="#D41F2C">B</text>
+      <line x1="108" y1="16" x2="145" y2="54" stroke="#1B2D5B" stroke-width="8" stroke-linecap="round"/>
+      <line x1="145" y1="16" x2="108" y2="54" stroke="#1B2D5B" stroke-width="8" stroke-linecap="round"/>
+      <text x="8" y="68" font-family="'Barlow',sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)" letter-spacing="3">FINLAND</text>
+    </svg>
+    <div class="header-title">
+      <span>Tuotekatalogi</span>
+      <span>Profiili- & Työvaatteet</span>
+    </div>
+    <div class="header-badge">2026</div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar-inner">
+    <div class="search-box">
+      <span class="search-icon">&#128269;</span>
+      <input type="search" id="search" placeholder="Hae tuotteella, koodilla, brändillä, värillä..." oninput="doFilter()">
+    </div>
+    <div class="divider-v"></div>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setFilter('kaikki',this)">Kaikki</button>
+      <button class="filter-btn" onclick="setFilter('varasto',this)">Varastossa</button>
+      <button class="filter-btn" onclick="setFilter('tilaus',this)">Tilaustuote</button>
+      <button class="filter-btn" onclick="setFilter('karkituote',this)">Kärkituote</button>
+    </div>
+    <div class="divider-v"></div>
+    <div class="filter-group">
+      <button class="filter-btn active" onclick="setKuvasto('kaikki',this)">Kaikki</button>
+      <button class="filter-btn" onclick="setKuvasto('profiili',this)">Profiilivaatteet</button>
+      <button class="filter-btn" onclick="setKuvasto('tyo',this)">Työvaatteet</button>
+      <button class="filter-btn" onclick="setKuvasto('suojain',this)">Suojaimet</button>
+    </div>
+  </div>
+</div>
+
+<div class="icon-filters">
+  <div class="icon-filters-inner">
+    <span class="icon-filter-label">Ominaisuudet:</span>
+    <button class="icon-btn" onclick="toggleIcon('unisex',this)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M12 11v10M9 18h6"/></svg>Unisex
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('miehet',this)">
+      <svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5 5M19 5h-5M19 5v5"/></svg>Miehet
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('naiset',this)">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M12 14v6M9 18h6"/></svg>Naiset
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('talvi',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>Talvi
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('vedenpitava',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>Vedenpitävä
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('stretch',this)">
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M15 8l4 4-4 4M9 8l-4 4 4 4"/></svg>Stretch
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('hivis',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>Hi-Vis
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('palosuojattu',this)">
+      <svg viewBox="0 0 24 24"><path d="M12 2c0 6-6 8-6 14a6 6 0 0 0 12 0c0-6-6-8-6-14z"/></svg>Palosuojattu
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('esd',this)">
+      <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>ESD
+    </button>
+    <button class="icon-btn" onclick="toggleIcon('hengittava',this)">
+      <svg viewBox="0 0 24 24"><path d="M3 12s4-8 9-8 9 8 9 8-4 8-9 8-9-8-9-8z"/><circle cx="12" cy="12" r="3"/></svg>Hengittävä
+    </button>
+  </div>
+</div>
+
+<div class="mob-cat-bar" id="mob-cats"></div>
+
+<div class="layout">
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Kategoriat</div>
+      <div class="sidebar-item active" onclick="setCat('kaikki',this)">
+        Kaikki tuotteet <span class="sidebar-count" id="sc-kaikki">0</span>
+      </div>
+    </div>
+    <div id="sidebar-cats"></div>
+    <div id="sidebar-brandit"></div>
+    <div id="sidebar-colors"></div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Hinta (€ + alv)</div>
+      <div class="price-filter">
+        <div class="price-range-wrap">
+          <div class="price-range-label">
+            <span id="price-min-lbl">0</span>
+            <span id="price-max-lbl">500</span>
+          </div>
+          <input type="range" id="price-min-range" min="0" max="500" value="0" step="5" oninput="updatePriceFilter()">
+          <input type="range" id="price-max-range" min="0" max="500" value="500" step="5" oninput="updatePriceFilter()">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="print-header">
+      <div>
+        <div style="font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;color:#1B2D5B;text-transform:uppercase">SBX Finland – Tuotekatalogi 2026</div>
+        <div style="font-size:11px;color:#6b7280">Hinnat ALV 0% | myynti@sbx.fi | 020 720 9030</div>
+      </div>
+      <div style="font-size:11px;color:#6b7280;text-align:right">Tulostettu: <span id="print-date"></span></div>
+    </div>
+
+    <div class="print-bar">
+      <span class="print-bar-label">&#128424; Tulosta PDF:</span>
+      <select class="print-select" id="print-profile" onchange="updateSuggest()">
+        <option value="kaikki">Koko kuvasto</option>
+        <option value="profiili">Profiilivaatekuvasto</option>
+        <option value="tyo">Työvaatekuvasto</option>
+        <option value="suojain">Suojainkuvasto</option>
+        <option value="kengat">Työkenkäkuvasto</option>
+      </select>
+      <select class="print-select" id="print-stock">
+        <option value="kaikki">Kaikki tuotteet</option>
+        <option value="varasto">Vain varastotuotteet</option>
+        <option value="karkituote">Vain kärkituotteet</option>
+      </select>
+      <select class="print-select" id="per-page" onchange="setPerPage(this.value)">
+        <option value="4">4 / sivu</option>
+        <option value="6" selected>6 / sivu</option>
+        <option value="9">9 / sivu</option>
+        <option value="12">12 / sivu</option>
+      </select>
+      <button class="print-btn" onclick="doPrint()">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Tulosta / Tallenna PDF
+      </button>
+      <span class="suggest-label">Suositus: <strong id="suggest-txt">6/sivu</strong></span>
+    </div>
+
+    <div class="content-header">
+      <div class="cat-header">
+        <div class="cat-bar"></div>
+        <div class="cat-title" id="cat-title">Kaikki tuotteet</div>
+      </div>
+      <div class="content-meta">
+        <span class="count-badge" id="count-badge"></span>
+        <div class="view-opts">
+          <button class="view-btn" onclick="setPerPage('4')">▦ 4</button>
+          <button class="view-btn active" onclick="setPerPage('6')">▦ 6</button>
+          <button class="view-btn" onclick="setPerPage('9')">▦ 9</button>
+          <button class="view-btn" onclick="setPerPage('12')">▦ 12</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="grid" class="grid g6"></div>
+  </div>
+</div>
+
+<script>
+// ── MUUTA TÄMÄ URL jos Apps Script -osoite muuttuu ──
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzt3Q4UozYMF_DhmXjEDVfX1YngpDrlLJyp5J3zNCrlfCSrZDrhwE1LegqmOGoBUhAPiA/exec';
+
+// ── Kategoriamäärittely ──
+const KATEGORIAT = [
+  {otsikko:'Profiilivaatteet', items:[
+    {id:'tpaidat',    nimi:'T-paidat'},
+    {id:'pikee',      nimi:'Pikeepaidat'},
+    {id:'college',    nimi:'Colleget & Hupparit'},
+    {id:'takit',      nimi:'Takit'},
+    {id:'paahineet',  nimi:'Päähineet'},
+  ]},
+  {otsikko:'Työvaatteet', items:[
+    {id:'hivis',      nimi:'Hi-Vis / Huomio'},
+    {id:'palo',       nimi:'Palosuojatut'},
+    {id:'tyohousut',  nimi:'Housut'},
+  ]},
+  {otsikko:'Suojaimet', items:[
+    {id:'kyparat',    nimi:'Kypärät'},
+    {id:'kuulo',      nimi:'Kuulosuojaus'},
+    {id:'suojalasit', nimi:'Suojalasit'},
+  ]},
+  {otsikko:'Kengät', items:[
+    {id:'kengat',     nimi:'Työkengät'},
+  ]},
+];
+
+const SUGGEST = {kaikki:'6/sivu',profiili:'6/sivu',tyo:'4/sivu',suojain:'4/sivu',kengat:'4/sivu'};
+const IKONIKUVAUKSET = {
+  unisex:'unisex',miehet:'miehet',naiset:'naiset',
+  talvi:'talvi',vedenpitava:'vedenpitävä',hengittava:'hengittävä',
+  tuulenpitava:'tuulenpitävä',stretch:'stretch',hivis:'hi-vis',
+  palosuojattu:'palosuojattu',esd:'esd',gore_tex:'gore-tex',kierratetty:'kierrätetty'
+};
+
+let PRODUCTS = [];
+let activeFilter='kaikki', activeKuvasto='kaikki', activeCat='kaikki';
+let activeIcons=[], searchQ='', activeColor='', activeBrandi='';
+let priceMin=0, priceMax=500;
+
+// ── Hintamuotoilu ──
+function formatHinta(raw){
+  if(!raw) return null;
+  // Jos on päivämäärä (esim. "1/1/1900" tai timestamp) → palautetaan null
+  if(typeof raw === 'string' && (raw.includes('/') || raw.includes('-')) && raw.match(/\d{4}/)) return null;
+  // Muunna numeroksi
+  let n;
+  if(typeof raw === 'number') n = raw;
+  else {
+    const s = String(raw).replace(',','.').replace(/[^0-9.]/g,'');
+    n = parseFloat(s);
+  }
+  if(isNaN(n)||n<=0) return null;
+  // Muoto: 00,00
+  return n.toLocaleString('fi-FI',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function parseHintaNum(raw){
+  if(!raw) return null;
+  if(typeof raw === 'string' && (raw.includes('/') && raw.match(/\d{4}/))) return null;
+  let n;
+  if(typeof raw === 'number') n = raw;
+  else { const s=String(raw).replace(',','.').replace(/[^0-9.]/g,''); n=parseFloat(s); }
+  return isNaN(n)||n<=0 ? null : n;
+}
+
+function updatePriceFilter(){
+  let mn=parseInt(document.getElementById('price-min-range').value);
+  let mx=parseInt(document.getElementById('price-max-range').value);
+  if(mn>mx){[mn,mx]=[mx,mn]}
+  priceMin=mn; priceMax=mx;
+  document.getElementById('price-min-lbl').textContent=mn+'€';
+  document.getElementById('price-max-lbl').textContent=mx+'€';
+  render();
+}
+
+function initPriceRange(){
+  // Laske max hinta datasta
+  const hinnat = PRODUCTS.map(p=>parseHintaNum(p.hinta)).filter(n=>n!==null);
+  if(!hinnat.length) return;
+  const maxH = Math.ceil(Math.max(...hinnat)/10)*10;
+  ['price-min-range','price-max-range'].forEach(id=>{
+    document.getElementById(id).max=maxH;
+  });
+  document.getElementById('price-max-range').value=maxH;
+  document.getElementById('price-max-lbl').textContent=maxH+'€';
+  priceMax=maxH;
+}
+
+// ── Craftin värikoodit → hex (6-numeroiset koodit datasta) ──
+const CRAFT_KOODIT = {
+  // Mustat ja harmaat
+  '999000':'#111111',  // Black
+  '998000':'#282828',  // Black melange
+  '995000':'#404040',  // Asphalt
+  '985000':'#a0a098',  // Granite
+  '981000':'#909888',  // Smoked Pearl
+  '975000':'#707070',  // Dark grey melange
+  '1975':  '#707070',  // Dark Grey Melange (lyhyt koodi)
+  '950000':'#b0b0b0',  // Grey melange
+  '947000':'#707868',  // Gravel
+  '935000':'#808880',  // Monument
+  '918000':'#c0c0b8',  // Ghost
+  '914000':'#a0a0a0',  // Ash
+  '900000':'#ffffff',  // White
+  // Siniset
+  '390000':'#1a3068',  // Navy
+  '395000':'#0a1840',  // Dark Navy
+  '360000':'#0040c0',  // Burst
+  '362000':'#4878a0',  // Flow
+  '363000':'#6888a0',  // River
+  '346000':'#1a2880',  // Club Cobolt
+  '345000':'#2040a0',  // Royal
+  '307000':'#6888b0',  // Zenith
+  '534000':'#4a6888',  // Slate blue melange
+  // Vihreät
+  '651000':'#2a6040',  // Team Green
+  '647000':'#3a6830',  // Leaf
+  '606000':'#3a8030',  // Craft Green
+  '376000':'#607850',  // Real
+  '664000':'#304830',  // Rift
+  '669000':'#384030',  // Woods
+  // Punaiset ja oranssit
+  '430000':'#e02020',  // Bright Red
+  '433000':'#c81020',  // Fiesta
+  '404000':'#e06070',  // Lychee
+  '410000':'#e85060',  // Crush
+  '396000':'#e03020',  // Blaze
+  '560000':'#e87800',  // Tiger
+  '578000':'#f08000',  // Orange Sun
+  '579000':'#e05800',  // Tart
+  '576000':'#f07000',  // Flourange (oranssi)
+  // Keltaiset
+  '503000':'#d8e040',  // N.Light
+  '505000':'#e8c800',  // Citrus
+  '511000':'#d4a800',  // Golden
+  '561000':'#f0d000',  // Glory
+  '845000':'#e8e000',  // Neon Blaze
+  // Pinkit ja violetit
+  '736000':'#e0208c',  // Hot Pink
+  '766000':'#d01890',  // Magenta
+  '759000':'#5020a0',  // True Purple
+  '851000':'#c0a8d8',  // Flumino (vaaleanvioletti)
+  // Ruskeat ja beiget
+  '580000':'#7a3818',  // Chestnut
+  '608000':'#b0a888',  // Hay
+  '699000':'#c8b870',  // Buff
+  '681000':'#5a4838',  // Chimera
+  '678000':'#508878',  // Opal
+  '240000':'#a89880',  // Taupe
+  '237000':'#b0a890',  // Raw
+  '214000':'#c8b8a8',  // Plaster
+  '211000':'#d4c8a8',  // Ecru
+  '286000':'#6a3040',  // Prune
+  // Muut
+  '333000':'#00b0c8',  // Menthol
+  '788000':'#606870',  // Flint
+};
+
+// ── Cliquen värikoodit → hex ──
+const CLIQUE_KOODIT = {
+  '00':'#ffffff',  // Valkoinen
+  '01':'#f0f5e8',  // Offwhite
+  '04':'#7a7040',  // Khaki
+  '07':'#e8e4dc',  // Kiven valkoinen
+  '10':'#f5a800',  // Sitruuna (oranssi-keltainen)
+  '11':'#d4e800',  // Visibility Yellow
+  '170':'#f56000', // Visibility Orange
+  '175':'#e05000', // Oranssi
+  '18':'#d43010',  // Veriappelsiini
+  '19':'#8b3010',  // Burned Orange
+  '203':'#f5b8c0', // Frosted Pink
+  '215':'#e8c0b8', // Candy Pink
+  '240':'#e8208c', // Active Pink
+  '250':'#e800a0', // Bright Pink
+  '300':'#cc0060', // Bright Cerise
+  '35':'#D41F2C',  // Punainen
+  '38':'#6d1a24',  // Viininpunainen
+  '44':'#6040b0',  // Bright Lilac
+  '54':'#00b0d8',  // Turkoosi
+  '55':'#2d78c8',  // Keskisininen
+  '56':'#1a5cb0',  // Sininen
+  '565':'#2850a0', // Blue Melange
+  '57':'#7cb4d4',  // Vaaleansininen
+  '570':'#4a7ab0', // Soft Blue
+  '575':'#4a5880', // Sumunsininen
+  '58':'#1a3a6e',  // Tummansininen
+  '580':'#1B2D5B', // Dark Navy / Tummansininen
+  '581':'#3a4a6a', // Denim
+  '595':'#4a6888', // Steel Blue
+  '554':'#4a5070', // Navy Melange
+  '600':'#a0cc00', // Huomio Vihreä
+  '602':'#88cc20', // Active Green
+  '605':'#78b830', // Omenanvihreä
+  '615':'#a8c890', // Sage Green
+  '62':'#2d8040',  // Lehden Vihreä
+  '66':'#1a3820',  // Metsästäjä Vihreä
+  '67':'#40b030',  // Kirkas Vihreä
+  '68':'#1a4020',  // Tummanvihreä
+  '71':'#3a5828',  // Armeijan Vihreä
+  '75':'#4a5030',  // Sumunvihreä
+  '815':'#d8d8b0', // Vaalea Beige
+  '82':'#888060',  // Hiekka
+  '820':'#b0a888', // Caffe Latte
+  '825':'#3a2020', // Dark Mocca
+  '90':'#707870',  // Harmaa
+  '92':'#a0a0a0',  // Tuhka
+  '925':'#b0b0b0', // Nature Melange
+  '94':'#c0c0c0',  // Hopea
+  '945':'#2a2a2a', // Tummanharmaa
+  '947':'#707878', // Heijastava Harmaa
+  '949':'#a0a8a0', // Heijastava
+  '95':'#909090',  // Meleerattu Harmaa
+  '955':'#c0c8c8', // Antracit Melange
+  '956':'#808888', // Metallinharmaa
+  '96':'#505050',  // Lyijy
+  '99':'#111111',  // Musta
+  '02':'#e8e4d8',  // Beige (C&B)
+  '03':'#f0ede4',  // Shell white (C&B)
+  '04':'#9a8a60',  // Khaki (C&B) - confirmed from PDF
+  '20':'#c05020',  // Orange rust (C&B)
+  '58':'#1a50c0',  // Deep blue (C&B)
+  '90':'#888890',  // Grey (C&B)
+  '98':'#505858',  // Pistol (C&B)
+  '370':'#e87060', // Papaya (C&B)
+  '505':'#a8c030', // N.Light/Light yellow (C&B)
+  '513':'#c8dce8', // Heaven blue (C&B)
+  '534':'#4a6888', // Slate blue melange (C&B)
+  '561':'#4a5880', // Indigo melange (C&B)
+  '569':'#5068a0', // Denim melange (C&B)
+  '640':'#3a4830', // Ivy green (C&B)
+  '694':'#2a5840', // Pine green (C&B)
+  '834':'#b8a888', // Nougat melange (C&B)
+  '921':'#d8e8f0', // Light blue (C&B)
+  '9918':'#1a1a1a', // Black/orange inside (C&B)
+};
+const VARI_HEX = {
+  // ── Mustat ──
+  'musta':'#1a1a1a','black':'#1a1a1a','noir':'#1a1a1a','ebony':'#1a1a1a',
+  // ── Harmaat ──
+  'harmaa':'#888','grey':'#888','gray':'#888','grå':'#888',
+  'meleerattu harmaa':'#999','meleerattu':'#999','melange':'#999','grå melange':'#999',
+  'tummanharmaa':'#4a4a4a','tumma harmaa':'#4a4a4a','dark grey':'#4a4a4a','dark gray':'#4a4a4a',
+  'anthracite':'#3d3d3d','antracite':'#3d3d3d','antrasiitti':'#3d3d3d',
+  'vaaleanharmaa':'#c8c8c8','vaalea harmaa':'#c8c8c8','light grey':'#c8c8c8','light gray':'#c8c8c8',
+  'silver':'#c0c0c0','hopea':'#c0c0c0',
+  'granite':'#707070','graniitti':'#707070',
+  // ── Valkoiset ──
+  'valkoinen':'#ffffff','white':'#ffffff','vit':'#ffffff','blanc':'#ffffff',
+  'luonnonvalkoinen':'#f5f0e8','off white':'#f5f0e8','natural':'#f5f0e8','ecru':'#f5f0e8',
+  // ── Siniset ──
+  'tummansininen':'#1B2D5B','navy':'#1B2D5B','laivastonsininen':'#1B2D5B','navy blue':'#1B2D5B',
+  'marine':'#1a3a5c','marinsininen':'#1a3a5c',
+  'keskisininen':'#2d78c8','sininen':'#2d78c8','blue':'#2d78c8','blå':'#2d78c8',
+  'royal blue':'#2356a0','kuninkaansininen':'#2356a0','royal':'#2356a0',
+  'vaaleansininen':'#7cb4d4','light blue':'#7cb4d4','ljusblå':'#7cb4d4',
+  'taivaansininen':'#87CEEB','sky blue':'#87CEEB','sky':'#87CEEB',
+  'cobalt':'#0047ab','koboltti':'#0047ab',
+  'azure':'#0080ff','asure':'#0080ff','cornflower':'#6495ed',
+  'indigo':'#4b0082','denim':'#1560bd','steel blue':'#4682b4',
+  'sweden blue':'#006AA7','ruotsinsininen':'#006AA7',
+  'pacific':'#0099cc','pacific blue':'#0099cc',
+  'ink':'#1f2d5c','inkki':'#1f2d5c',
+  // ── Punaiset ──
+  'punainen':'#D41F2C','red':'#D41F2C','röd':'#D41F2C','rouge':'#D41F2C',
+  'tummanpunainen':'#8b0000','dark red':'#8b0000','scarlet':'#ff2400',
+  'burgundy':'#800020','viininpunainen':'#722F37','wine':'#722F37','viini':'#722F37',
+  'bordeaux':'#6d1a24','cherry':'#990000','crimson':'#dc143c',
+  // ── Vihreät ──
+  'vihreä':'#2d7a3a','green':'#2d7a3a','grön':'#2d7a3a',
+  'tummanvihreä':'#1a4d22','dark green':'#1a4d22','bottle green':'#1a4d22','forest green':'#228b22',
+  'kelly green':'#4cbb17','lime green':'#32cd32','lime':'#bfff00',
+  'teal':'#0F6E56','petrooli':'#0F6E56','petrol':'#0F6E56',
+  'olive':'#6b6b2d','oliivi':'#6b6b2d','olive green':'#556b2f','khaki':'#c3b091',
+  'mint':'#98c8a0','minttu':'#98c8a0','sage':'#87ae73','moss':'#8a9a5b',
+  'hunter':'#355e3b','emerald':'#50c878','smaragdi':'#50c878',
+  // ── Keltaiset ──
+  'keltainen':'#f5e642','yellow':'#f5e642','gul':'#f5e642','jaune':'#f5e642',
+  'huomionkeltainen':'#f5e030','hi-vis yellow':'#f5e030','hiviskeltainen':'#f5e030',
+  'lemon':'#fff44f','sitruuna':'#fff44f','citrus':'#f5c400',
+  'kulta':'#DAA520','gold':'#DAA520','golden':'#DAA520',
+  // ── Oranssit ──
+  'oranssi':'#ff6600','orange':'#ff6600',
+  'huomiooranssi':'#ff5500','hi-vis orange':'#ff5500','hivisoranssi':'#ff5500',
+  'amber':'#ffbf00','apricot':'#fbceb1','terracotta':'#c66b3d',
+  // ── Ruskeat ja beiget ──
+  'ruskea':'#8b6b4a','brown':'#8b6b4a','brun':'#8b6b4a',
+  'beige':'#f5f0dc','sand':'#c2b280','hiekka':'#c2b280',
+  'stone':'#b0a090','kivi':'#b0a090','camel':'#c19a6b','kamel':'#c19a6b',
+  'tan':'#d2b48c','taupe':'#8b7355','tobacco':'#6b4226','hazel':'#8e7618',
+  // ── Violetit ja pinkit ──
+  'violetti':'#6a0dad','purple':'#6a0dad','lila':'#9370DB',
+  'vaaleanpunainen':'#ff69b4','pink':'#ff69b4','rosa':'#ff69b4',
+  'fuchsia':'#ff00ff','magenta':'#ff00ff','plum':'#8b008b',
+  'lavender':'#e6e6fa','laventeli':'#e6e6fa','lilac':'#c8a2c8','mauve':'#e0b0ff',
+  // ── Muut ──
+  'turquoise':'#40e0d0','turkoosi':'#40e0d0',
+  'multicolour':'linear-gradient(135deg,#f00,#0f0,#00f)','kirjava':'linear-gradient(135deg,#f00,#0f0,#00f)',
+};
+
+function resolveHex(varinimi, varikoodi) {
+  if (!varinimi && !varikoodi) return '#ccc';
+  const koodi = String(varikoodi||'').trim();
+
+  // Normalisoi koodi: jos lyhyt (1-3 merkkiä), täytä etunollilla 2-merkiksi
+  // Esim. Google Sheets muuttaa "00" → 0, "04" → 4 jne.
+  const koodiNorm = koodi.length > 0 && koodi.length <= 3 && !isNaN(koodi)
+    ? koodi.padStart(2, '0')
+    : koodi;
+
+  // 1. Tarkista Clique-koodit ensin normalisoidulla koodilla
+  if (koodiNorm && CLIQUE_KOODIT[koodiNorm]) return CLIQUE_KOODIT[koodiNorm];
+  // Myös alkuperäisellä koodilla (pitkät koodit kuten 580, 955 jne.)
+  if (koodi && CLIQUE_KOODIT[koodi]) return CLIQUE_KOODIT[koodi];
+
+  // 2. Tarkista Craft-koodit
+  if (koodi && CRAFT_KOODIT[koodi]) return CRAFT_KOODIT[koodi];
+
+  const key = (varinimi||'').toLowerCase().trim();
+
+  // 3. Täsmäosuma nimestä
+  if (VARI_HEX[key]) return VARI_HEX[key];
+
+  // 4. Sanahaku (esim. "Meleerattu harmaa" → "harmaa")
+  const sanat = key.split(/[\s\/\-]+/);
+  for (const sana of sanat) {
+    if (sana.length > 3 && VARI_HEX[sana]) return VARI_HEX[sana];
+  }
+
+  // 5. Sisältöosuma
+  for (const [k, v] of Object.entries(VARI_HEX)) {
+    if (k.length > 3 && (key.includes(k) || k.includes(key))) return v;
+  }
+
+  // 6. Fallback: generoi väri hashista — ei harmaata
+  let hash = 0;
+  const s = koodi + key;
+  for (let i = 0; i < s.length; i++) hash = s.charCodeAt(i) + ((hash << 5) - hash);
+  const hue = Math.abs(hash) % 360;
+  const sat = 40 + (Math.abs(hash >> 8) % 30);
+  const lig = 35 + (Math.abs(hash >> 16) % 25);
+  return `hsl(${hue},${sat}%,${lig}%)`;
+}
+
+// ── Lataa data Sheetsistä ──
+function loadData(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = `<div class="loading"><div class="spinner"></div><span>Ladataan tuotteita...</span></div>`;
+  fetch(SHEETS_URL)
+    .then(r => r.json())
+    .then(data => {
+      PRODUCTS = data.tuotteet || [];
+      buildSidebar();
+      buildMobCats();
+      buildBrandit();
+      buildColorSwatches();
+      initPriceRange();
+      render();
+    })
+    .catch(err => {
+      grid.innerHTML = `<div class="empty">⚠️ Tuotteiden lataus epäonnistui.<br><small>${err.message}</small></div>`;
+    });
+}
+
+// ── Rakenna sivupalkki ──
+function buildSidebar(){
+  const el = document.getElementById('sidebar-cats');
+  el.innerHTML = KATEGORIAT.map(g => {
+    const items = g.items.map(it => {
+      const n = PRODUCTS.filter(p => p.alakategoria===it.id||p.kategoria===it.id).length;
+      return `<div class="sidebar-item" id="si-${it.id}" onclick="setCat('${it.id}',this)">${it.nimi} <span class="sidebar-count" id="sc-${it.id}">${n}</span></div>`;
+    }).join('');
+    return `<div class="sidebar-section"><div class="sidebar-title">${g.otsikko}</div>${items}</div>`;
+  }).join('');
+  document.getElementById('sc-kaikki').textContent = PRODUCTS.length;
+}
+
+function buildMobCats(){
+  const el = document.getElementById('mob-cats');
+  const allBtn = `<button class="mob-cat-btn active" onclick="mobCat('kaikki',this)">Kaikki</button>`;
+  const btns = KATEGORIAT.flatMap(g=>g.items).map(it=>
+    `<button class="mob-cat-btn" onclick="mobCat('${it.id}',this)">${it.nimi}</button>`
+  ).join('');
+  el.innerHTML = allBtn + btns;
+}
+
+function buildBrandit(){
+  const laskuri = {};
+  for (const p of PRODUCTS) {
+    const b = (p.brandi||'').trim();
+    if (b) laskuri[b] = (laskuri[b]||0) + 1;
+  }
+  const el = document.getElementById('sidebar-brandit');
+  const items = Object.entries(laskuri)
+    .sort((a,b) => b[1]-a[1])
+    .map(([b,n]) => `<div class="sidebar-item" id="sib-${b.replace(/\s/g,'_')}" onclick="setBrandi('${b.replace(/'/g,"\\'")}',this)">
+      ${b} <span class="sidebar-count">${n}</span>
+    </div>`).join('');
+  el.innerHTML = `<div class="sidebar-section"><div class="sidebar-title">Brändi</div>${items}</div>`;
+}
+
+function setBrandi(b, btn){
+  if(activeBrandi === b){
+    activeBrandi='';
+    document.querySelectorAll('[id^="sib-"]').forEach(el=>el.classList.remove('active'));
+  } else {
+    activeBrandi = b;
+    document.querySelectorAll('[id^="sib-"]').forEach(el=>el.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  render();
+}
+
+// ── Rakenna värisuodatin ──
+function buildColorSwatches(){
+  // Kerää kaikki uniikit värit kaikista tuotteista
+  const variMap = {}; // varinimi -> hex
+  for (const p of PRODUCTS) {
+    for (const v of (p.varit||[])) {
+      const nimi = (v.varinimi||v.varikoodi||'').trim();
+      if (!nimi) continue;
+      if (!variMap[nimi]) {
+        variMap[nimi] = v.hex || resolveHex(v.varinimi, v.varikoodi);
+      }
+    }
+  }
+  const el = document.getElementById('color-swatches');
+  el.innerHTML = Object.entries(variMap).sort((a,b)=>a[0].localeCompare(b[0],undefined,{sensitivity:'base'}))
+    .map(([nimi, hex]) => {
+      const isBright = isLightColor(hex);
+      return `<div class="cf-swatch" style="background:${hex};${isBright?'border-color:rgba(0,0,0,.25)':''}" 
+        title="${nimi}" onclick="setColorFilter('${nimi.replace(/'/g,"\\'")}',this)"></div>`;
+    }).join('');
+}
+
+// ── Väriryhmät sivupalkkiin ──
+const VARIPERHEET = [
+  {id:'musta',  nimi:'Musta',         hex:'#1a1a1a', sanat:['black','musta','noir','ebony']},
+  {id:'harmaa', nimi:'Harmaa',         hex:'#888888', sanat:['grey','gray','harmaa','grå','silver','hopea','anthracite','antracite','melange','meleerattu','granite']},
+  {id:'valkoinen',nimi:'Valkoinen',    hex:'#ffffff', sanat:['white','valkoinen','vit','blanc','off white','luonnonvalkoinen','natural']},
+  {id:'sininen',nimi:'Sininen',        hex:'#1B2D5B', sanat:['navy','blue','sininen','blå','azur','azure','royal','cobalt','marine','laivastonsininen','tummansininen','cornflower','indigo','denim','sky','taivaansininen','steel']},
+  {id:'punainen',nimi:'Punainen',      hex:'#D41F2C', sanat:['red','punainen','rouge','röd','scarlet','crimson','bordeaux','burgundy','wine','viini','cherry','kirsch','claret']},
+  {id:'vihrea', nimi:'Vihreä',         hex:'#2d7a3a', sanat:['green','vihreä','grön','vert','kelly','forest','bottle','olive','oliivi','khaki','pine','sage','moss','teal','petrooli','petrol','hunter','emerald']},
+  {id:'keltainen',nimi:'Keltainen',    hex:'#f5e642', sanat:['yellow','keltainen','gul','jaune','hi-vis yellow','huomionkeltainen','lemon','citrus','gold','kulta','golden','corn']},
+  {id:'oranssi',nimi:'Oranssi',        hex:'#ff6600', sanat:['orange','oranssi','hi-vis orange','huomiooranssi','amber','apricot','terracotta']},
+  {id:'ruskea', nimi:'Ruskea / Beige', hex:'#8b6b4a', sanat:['brown','ruskea','brun','beige','sand','hiekka','camel','kamel','stone','kivi','tan','taupe','tobacco','hazel']},
+  {id:'violetti',nimi:'Violetti / Pinkki',hex:'#8b3fbe',sanat:['purple','violetti','lila','pink','vaaleanpunainen','rosa','fuchsia','magenta','plum','lavender','lilac','mauve']},
+];
+
+function varinPerhe(varinimi){
+  const low = (varinimi||'').toLowerCase();
+  for (const p of VARIPERHEET) {
+    if (p.sanat.some(s => low.includes(s))) return p.id;
+  }
+  return null;
+}
+
+function buildColorSwatches(){
+  // Laske montako tuotetta per väriperhe
+  const laskuri = {};
+  for (const p of PRODUCTS) {
+    const perheet = new Set();
+    for (const v of (p.varit||[])) {
+      const perhe = varinPerhe(v.varinimi||v.varikoodi);
+      if (perhe) perheet.add(perhe);
+    }
+    perheet.forEach(perhe => { laskuri[perhe] = (laskuri[perhe]||0) + 1; });
+  }
+
+  const el = document.getElementById('sidebar-colors');
+  const items = VARIPERHEET
+    .filter(p => laskuri[p.id] > 0)
+    .map(p => `
+      <div class="sidebar-item color-item" id="sic-${p.id}" onclick="setColorFilter('${p.id}',this)">
+        <span class="sidebar-color-dot" style="background:${p.hex};${p.id==='valkoinen'?'border-color:#ccc':''}"></span>
+        ${p.nimi}
+        <span class="sidebar-count" id="scc-${p.id}">${laskuri[p.id]||0}</span>
+      </div>`).join('');
+
+  el.innerHTML = `<div class="sidebar-section">
+    <div class="sidebar-title">Värit</div>
+    ${items}
+  </div>`;
+}
+
+function setColorFilter(perheId, btn){
+  if(activeColor === perheId){
+    activeColor='';
+    document.querySelectorAll('.sidebar-item.color-item').forEach(b=>b.classList.remove('active'));
+  } else {
+    activeColor = perheId;
+    document.querySelectorAll('.sidebar-item.color-item').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  render();
+}
+
+function clearColorFilter(){
+  activeColor='';
+  document.querySelectorAll('.sidebar-item.color-item').forEach(b=>b.classList.remove('active'));
+  render();
+}
+
+// ── Ikonit SVG ──
+function iconSVG(key){
+  const icons = {
+    unisex:`<svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="4"/><path d="M12 11v10M9 18h6"/></svg>`,
+    miehet:`<svg viewBox="0 0 24 24"><circle cx="10" cy="14" r="5"/><path d="M19 5l-5 5M19 5h-5M19 5v5"/></svg>`,
+    naiset:`<svg viewBox="0 0 24 24" class="red"><circle cx="12" cy="9" r="5"/><path d="M12 14v6M9 18h6"/></svg>`,
+    talvi:`<svg viewBox="0 0 24 24" class="blue"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg>`,
+    vedenpitava:`<svg viewBox="0 0 24 24" class="blue"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>`,
+    hengittava:`<svg viewBox="0 0 24 24" class="green"><path d="M3 12s4-8 9-8 9 8 9 8-4 8-9 8-9-8-9-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+    stretch:`<svg viewBox="0 0 24 24"><path d="M5 12h14M15 8l4 4-4 4M9 8l-4 4 4 4"/></svg>`,
+    hivis:`<svg viewBox="0 0 24 24" class="amber"><path d="M12 2l2 7h7l-5.5 4 2 7L12 16l-5.5 4 2-7L3 9h7z"/></svg>`,
+    palosuojattu:`<svg viewBox="0 0 24 24" class="red"><path d="M12 2c0 6-6 8-6 14a6 6 0 0 0 12 0c0-6-6-8-6-14z"/></svg>`,
+    esd:`<svg viewBox="0 0 24 24" class="amber"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>`,
+  };
+  return icons[key]||'';
+}
+
+function buildIcons(p){
+  const parts=[];
+  const suku = (p.sukupuoli||'').toLowerCase();
+  if(suku.includes('m')&&suku.includes('n')) parts.push('unisex');
+  else if(suku.includes('m')) parts.push('miehet');
+  else if(suku.includes('n')) parts.push('naiset');
+  const ik = p.ikonit||{};
+  ['talvi','vedenpitava','hengittava','stretch','hivis','palosuojattu','esd'].forEach(k=>{if(ik[k])parts.push(k);});
+  if(!parts.length) return '<span style="font-size:10px;color:#ccc">—</span>';
+  return parts.map(k=>`<span class="card-icon" title="${IKONIKUVAUKSET[k]||k}">${iconSVG(k)}</span>`).join('');
+}
+
+function buildStandards(p){
+  const s=p.standardit||{};
+  const tags=[];
+  if(s.en_20471_lk) tags.push(`EN 20471 lk${s.en_20471_lk}`);
+  if(s.en_11612) tags.push('EN 11612');
+  if(s.en_1149) tags.push('EN 1149-5');
+  if(s.iec_61482) tags.push('IEC 61482');
+  if(s.s_luokka) tags.push(s.s_luokka);
+  if(s.muut) tags.push(s.muut);
+  return tags.map(t=>`<span class="std-tag">${t}</span>`).join('');
+}
+
+function buildCard(p){
+  const varit = p.varit||[];
+
+  // Jos värisuodatus aktiivinen, näytä sen värin kuva ensimmäisenä
+  let startVi = 0;
+  if(activeColor){
+    const idx = varit.findIndex(v => varinPerhe(v.varinimi||v.varikoodi) === activeColor);
+    if(idx>=0) startVi = idx;
+  }
+  const v0 = varit[startVi]||{};
+  const mainImg = v0.kuva_front||'';
+
+  const badge = p.varastotuote
+    ? '<span class="badge-stock">Varastossa</span>'
+    : '<span class="badge-order">Tilaustuote</span>';
+  const topBadge = p.karkituote ? '<span class="badge-top">Kärkituote</span>' : '';
+
+  const dots = (v0.kuva_front&&v0.kuva_back)
+    ? ['kuva_front','kuva_back','kuva_left','kuva_right']
+        .filter(k=>v0[k])
+        .map((k,i)=>`<button class="img-dot${i===0?' active':''}" onclick="switchImg('${p.tuotekoodi}','${k}',this,event)"></button>`)
+        .join('')
+    : '';
+
+  const swatches = varit.slice(0,16).map((v,vi)=>{
+    const hex = v.hex || resolveHex(v.varinimi, v.varikoodi);
+    const isActive = vi === startVi;
+    return `<div class="color-dot${isActive?' active':''}"
+      style="background:${hex}" title="${v.varinimi||v.varikoodi}"
+      onclick="switchColor('${p.tuotekoodi}',${vi},this)">${v.women?'<span class="w-mark"></span>':''}</div>`;
+  }).join('');
+
+  // Hinta muotoiltuna
+  const hintatxt = formatHinta(p.hinta);
+  const hinta = hintatxt ? `${hintatxt} <span>€ + alv</span>` : '<span>—</span>';
+
+  // Koot: näytä aktiivisen värin koot jos saatavilla, muuten tuotteen yleiset koot
+  const kootTxt = v0.koot || p.koot || '';
+
+  const stds = buildStandards(p);
+
+  return `<div class="card" data-id="${p.tuotekoodi}">
+    <div class="card-img-wrap">
+      <img class="card-img" id="img-${p.tuotekoodi}" src="${mainImg}" alt="${p.nimi}" loading="lazy"
+        data-vi="${startVi}" onerror="this.style.opacity='.2'">
+      <div class="card-badges">${badge}${topBadge}</div>
+      <div class="img-nav">${dots}</div>
+    </div>
+    <div class="card-icons">${buildIcons(p)}</div>
+    <div class="card-body">
+      <div class="card-brand">${p.brandi||''}</div>
+      <div class="card-code">${p.tuotekoodi}</div>
+      <div class="card-name">${p.nimi}</div>
+      <div class="card-desc">${p.kuvaus||''}</div>
+      ${stds?`<div class="card-standards">${stds}</div>`:''}
+      <div class="card-colors" id="sw-${p.tuotekoodi}">${swatches}</div>
+    </div>
+    <div class="card-footer">
+      <div class="card-price">${hinta}</div>
+      <div class="card-sizes" id="sz-${p.tuotekoodi}">${kootTxt}</div>
+    </div>
+  </div>`;
+}
+
+function switchImg(pid,key,dot,e){
+  e.stopPropagation();
+  const p=PRODUCTS.find(x=>x.tuotekoodi===pid);
+  if(!p)return;
+  const vi=parseInt(document.getElementById('img-'+pid).dataset.vi||0);
+  const v=p.varit[vi]||{};
+  if(!v[key])return;
+  document.getElementById('img-'+pid).src=v[key];
+  dot.closest('.img-nav').querySelectorAll('.img-dot').forEach(d=>d.classList.remove('active'));
+  dot.classList.add('active');
+}
+
+function switchColor(pid,vi,dot){
+  const p=PRODUCTS.find(x=>x.tuotekoodi===pid);
+  if(!p)return;
+  const v=p.varit[vi]||{};
+  const img=document.getElementById('img-'+pid);
+  if(v.kuva_front) img.src=v.kuva_front;
+  img.dataset.vi=vi;
+  dot.closest('.card-colors').querySelectorAll('.color-dot').forEach(d=>d.classList.remove('active'));
+  dot.classList.add('active');
+  dot.closest('.card').querySelectorAll('.img-dot').forEach((d,i)=>d.classList.toggle('active',i===0));
+  // Päivitä koot aktiiviselle värille
+  const szEl=document.getElementById('sz-'+pid);
+  if(szEl) szEl.textContent=v.koot||p.koot||'';
+}
+
+// ── Suodatus ──
+function matchProduct(p){
+  if(activeFilter==='varasto'&&!p.varastotuote)return false;
+  if(activeFilter==='tilaus'&&p.varastotuote)return false;
+  if(activeFilter==='karkituote'&&!p.karkituote)return false;
+  if(activeKuvasto!=='kaikki'){
+    const kat=(p.kategoria||'').toLowerCase();
+    if(activeKuvasto==='profiili'&&!['tpaidat','pikee','college','takit','paahineet','liivi','neule','kauluspaita','fleece','softshell','kuoritakki','untuvatakki','talvitakki','housut'].includes(kat))return false;
+    if(activeKuvasto==='tyo'&&!['hivis','palo','tyohousut','tyotakki'].includes(kat))return false;
+    if(activeKuvasto==='suojain'&&!['kyparat','kuulo','suojalasit','hengitys','putoaminen'].includes(kat))return false;
+  }
+  if(activeCat!=='kaikki'&&p.alakategoria!==activeCat&&p.kategoria!==activeCat)return false;
+  for(const ic of activeIcons){
+    const suku=(p.sukupuoli||'').toLowerCase();
+    if(ic==='unisex'&&!(suku.includes('m')&&suku.includes('n')))return false;
+    if(ic==='miehet'&&!suku.includes('m'))return false;
+    if(ic==='naiset'&&!suku.includes('n'))return false;
+    const ik=p.ikonit||{};
+    if(['talvi','vedenpitava','hengittava','stretch','hivis','palosuojattu','esd'].includes(ic)&&!ik[ic])return false;
+  }
+  // Hintasuodatus
+  const hn = parseHintaNum(p.hinta);
+  if(hn !== null && (hn < priceMin || hn > priceMax)) return false;
+  if(activeBrandi && (p.brandi||'').trim() !== activeBrandi) return false;
+  if(activeColor){
+    const match = (p.varit||[]).some(v => varinPerhe(v.varinimi||v.varikoodi) === activeColor);
+    if(!match) return false;
+  }
+  if(searchQ){
+    const hay=(p.nimi+p.tuotekoodi+p.brandi+p.kuvaus+(p.varit||[]).map(v=>v.varinimi+' '+v.varikoodi).join(' ')+p.materiaali+p.koot).toLowerCase();
+    if(!hay.includes(searchQ))return false;
+  }
+  return true;
+}
+
+function render(){
+  const vis=PRODUCTS.filter(matchProduct);
+  const grid=document.getElementById('grid');
+  grid.innerHTML=vis.length ? vis.map(buildCard).join('') : '<div class="empty">Ei tuloksia. Kokeile eri hakusanaa tai suodattimia.</div>';
+  document.getElementById('count-badge').textContent=vis.length+' / '+PRODUCTS.length+' tuotetta';
+  document.getElementById('sc-kaikki').textContent=PRODUCTS.length;
+}
+
+function setFilter(v,btn){activeFilter=v;btn.closest('.filter-group').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render()}
+function setKuvasto(v,btn){activeKuvasto=v;btn.closest('.filter-group').querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');render()}
+function setCat(v,btn){activeCat=v;document.querySelectorAll('.sidebar-item').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('cat-title').textContent=btn.textContent.replace(/\d+/,'').trim();render()}
+function mobCat(v,btn){activeCat=v;document.querySelectorAll('.mob-cat-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');document.getElementById('cat-title').textContent=btn.textContent;render()}
+function toggleIcon(v,btn){btn.classList.toggle('active');activeIcons=activeIcons.includes(v)?activeIcons.filter(i=>i!==v):[...activeIcons,v];render()}
+function doFilter(){searchQ=document.getElementById('search').value.toLowerCase();render()}
+function setPerPage(v){const g=document.getElementById('grid');['g4','g6','g9','g12'].forEach(c=>g.classList.remove(c));g.classList.add('g'+v);document.querySelectorAll('.view-btn').forEach(b=>b.classList.toggle('active',b.textContent.includes(v)));document.getElementById('per-page').value=v}
+function updateSuggest(){document.getElementById('suggest-txt').textContent=SUGGEST[document.getElementById('print-profile').value]||'6/sivu'}
+function doPrint(){
+  const prof=document.getElementById('print-profile').value;
+  const stock=document.getElementById('print-stock').value;
+  const origF=activeFilter,origK=activeKuvasto;
+  if(prof!=='kaikki')activeKuvasto=prof==='profiili'?'profiili':prof==='tyo'?'tyo':prof==='suojain'?'suojain':'tyo';
+  if(stock==='varasto')activeFilter='varasto';
+  else if(stock==='karkituote')activeFilter='karkituote';
+  render();
+  setTimeout(()=>{window.print();activeFilter=origF;activeKuvasto=origK;render();},400);
+}
+
+document.getElementById('print-date').textContent=new Date().toLocaleDateString('fi-FI');
+loadData();
+</script>
+</body>
+</html>
