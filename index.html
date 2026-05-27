@@ -792,7 +792,7 @@ function buildColorSwatches(){
       const nimi = (v.varinimi||v.varikoodi||'').trim();
       if (!nimi) continue;
       if (!variMap[nimi]) {
-        variMap[nimi] = v.hex || resolveHex(v.varinimi, v.varikoodi);
+        variMap[nimi] = (v.hex && v.hex !== '#cccccc' && v.hex !== '#ccc') ? v.hex : resolveHex(v.varinimi, v.varikoodi);
       }
     }
   }
@@ -939,7 +939,7 @@ function buildCard(p){
     : '';
 
   const swatches = varit.slice(0,16).map((v,vi)=>{
-    const hex = v.hex || resolveHex(v.varinimi, v.varikoodi);
+    const hex = (v.hex && v.hex !== '#cccccc' && v.hex !== '#ccc') ? v.hex : resolveHex(v.varinimi, v.varikoodi);
     const isActive = vi === startVi;
     return `<div class="color-dot${isActive?' active':''}"
       style="background:${hex}" title="${v.varinimi||v.varikoodi}"
