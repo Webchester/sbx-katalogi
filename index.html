@@ -938,11 +938,17 @@ function buildCard(p){
         .join('')
     : '';
 
-  const swatches = varit.slice(0,16).map((v,vi)=>{
+  // Jos varastosuodatin aktiivinen, näytä ensin varastovärit
+  const naytettavatVarit = (activeFilter === 'varasto')
+    ? [...varit.filter(v => v.varastotuote), ...varit.filter(v => !v.varastotuote)]
+    : varit;
+
+  const swatches = naytettavatVarit.slice(0,16).map((v,vi)=>{
     const hex = (v.hex && v.hex !== '#cccccc' && v.hex !== '#ccc') ? v.hex : resolveHex(v.varinimi, v.varikoodi);
     const isActive = vi === startVi;
-    return `<div class="color-dot${isActive?' active':''}"
-      style="background:${hex}" title="${v.varinimi||v.varikoodi}"
+    const eiVarastossa = (activeFilter === 'varasto') && !v.varastotuote;
+    return `<div class="color-dot${isActive?' active':''}${eiVarastossa?' out-of-stock':''}"
+      style="background:${hex};${eiVarastossa?'opacity:0.3;':''}" title="${v.varinimi||v.varikoodi}"
       onclick="switchColor('${p.tuotekoodi}',${vi},this)">${v.women?'<span class="w-mark"></span>':''}</div>`;
   }).join('');
 
