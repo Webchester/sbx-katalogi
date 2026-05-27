@@ -675,39 +675,36 @@ const VARI_HEX = {
 
 function resolveHex(varinimi, varikoodi) {
   if (!varinimi && !varikoodi) return '#ccc';
-  const koodi = String(varikoodi||'').trim();
-
-  // Normalisoi koodi: jos lyhyt (1-3 merkkiä), täytä etunollilla 2-merkiksi
-  // Esim. Google Sheets muuttaa "00" → 0, "04" → 4 jne.
-  const koodiNorm = koodi.length > 0 && koodi.length <= 3 && !isNaN(koodi)
-    ? koodi.padStart(2, '0')
-    : koodi;
-
-  // 1. Tarkista Clique-koodit ensin normalisoidulla koodilla
-  if (koodiNorm && CLIQUE_KOODIT[koodiNorm]) return CLIQUE_KOODIT[koodiNorm];
-  // Myös alkuperäisellä koodilla (pitkät koodit kuten 580, 955 jne.)
-  if (koodi && CLIQUE_KOODIT[koodi]) return CLIQUE_KOODIT[koodi];
-
-  // 2. Tarkista Craft-koodit
-  if (koodi && CRAFT_KOODIT[koodi]) return CRAFT_KOODIT[koodi];
 
   const key = (varinimi||'').toLowerCase().trim();
 
-  // 3. Täsmäosuma nimestä
-  if (VARI_HEX[key]) return VARI_HEX[key];
+  // 1. Täsmäosuma nimestä (ENSIN — värinimi on luotettavampi kuin koodi)
+  if (key && VARI_HEX[key]) return VARI_HEX[key];
 
-  // 4. Sanahaku (esim. "Meleerattu harmaa" → "harmaa")
-  const sanat = key.split(/[\s\/\-]+/);
-  for (const sana of sanat) {
-    if (sana.length > 3 && VARI_HEX[sana]) return VARI_HEX[sana];
+  // 2. Sanahaku nimestä (esim. "Meleerattu harmaa" → "harmaa")
+  if (key) {
+    const sanat = key.split(/[\s\/\-]+/);
+    for (const sana of sanat) {
+      if (sana.length > 3 && VARI_HEX[sana]) return VARI_HEX[sana];
+    }
   }
 
-  // 5. Sisältöosuma
-  for (const [k, v] of Object.entries(VARI_HEX)) {
-    if (k.length > 3 && (key.includes(k) || k.includes(key))) return v;
+  // 3. Sisältöosuma nimestä
+  if (key) {
+    for (const [k, v] of Object.entries(VARI_HEX)) {
+      if (k.length > 3 && (key.includes(k) || k.includes(key))) return v;
+    }
   }
 
-  // 6. Fallback: generoi väri hashista — ei harmaata
+  // 4. Tarkista värikoodit
+  const koodi = String(varikoodi||'').trim();
+  const koodiNorm = koodi.length > 0 && koodi.length <= 3 && !isNaN(koodi)
+    ? koodi.padStart(2, '0') : koodi;
+  if (koodiNorm && CLIQUE_KOODIT[koodiNorm]) return CLIQUE_KOODIT[koodiNorm];
+  if (koodi && CLIQUE_KOODIT[koodi]) return CLIQUE_KOODIT[koodi];
+  if (koodi && CRAFT_KOODIT[koodi]) return CRAFT_KOODIT[koodi];
+
+  // 5. Fallback: generoi väri hashista
   let hash = 0;
   const s = koodi + key;
   for (let i = 0; i < s.length; i++) hash = s.charCodeAt(i) + ((hash << 5) - hash);
